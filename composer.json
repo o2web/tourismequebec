@@ -1,0 +1,21 @@
+{
+    "name": "o2web/tourismequebec",
+    "description": "This library provides an easy way to manage several query, filters, aggregation and others in elastica structure",
+    "keywords": ["o2web", "tourismequebec", "quebec", "tourisme"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fabricio Bedoya",
+            "email": "fbedoya@o2web.ca"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "O2Web\\TourismeQuebec\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
