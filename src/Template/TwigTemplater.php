@@ -61,6 +61,11 @@ class TwigTemplater
         return $code;
     }
 
+    /**
+     * 
+     * @param type $langBrut
+     * @return string
+     */
     public static function renderUrlTwig($langBrut = 'EN')
     {
         $lang = strtoupper($langBrut);
@@ -69,6 +74,57 @@ class TwigTemplater
             $codeUrl = "{{ res['ETBL_URL_EN'] }}";
         }
         return $codeUrl;
+    }
+    
+    /**
+     * 
+     * @param string $langBrut
+     * @param string $code
+     * @return string
+     */
+    public static function renderTitleAddress($langBrut = 'EN', $code = '')
+    {
+        $lang = strtoupper($langBrut);
+        $code .= "{{ res['ETBL_NOM_" . $lang . "']}}";
+        $code .= "{% if (res.ADRESSE_PRINC['ADR_PNT_SERVC_" . $lang . "'] is defined) %}";
+        $code .= "{{ res.ADRESSE_PRINC['ADR_PNT_SERVC_" . $lang . "']}}";
+        $code .= "{% endif %}";
+        return $code;
+    }
+    
+    /**
+     * Function to calculate accommodation's rating 
+     * @param type $variable
+     * @param string $code
+     * @return string
+     */
+    public static function renderGetPictogrameRating($variable, $code = '')
+    {
+        $code .= "
+            {% if res.ETBL_CLASSIFICATIONS.ETBL_CLASS_ATTRB_ID %}
+                {% set hidden_stars = picto[res.ETBL_CLASSIFICATIONS.ETBL_CLASS_ATTRB_ID]|replace({'star': '', '-': '.'}) %}
+                {% set picto_name = \"picto-\" ~ res.ETBL_CLASSIFICATIONS.ETBL_CLASS_ATTRB_ID %}
+                {% set " . $variable . "= picto[picto_name] %}
+            {% endif %}";
+        return $code;
+    }
+    
+    public static function renderGetMultimedia($imageUrl, $imageDefaultUrl, $lang = 'EN', $code = '')
+    {
+        $code .= "
+            {% set image_section = res['ETBL_REG_SECTION_ID'] %}
+            {% set {$imageDefaultUrl} = images_default[image_section] %}
+            {% set picture_url = '' %}
+            {% if res['MULTIMEDIAS'] is defined and res['MULTIMEDIAS'] is not empty %}
+                {% if res['MULTIMEDIAS']['MUL_GENRE_ID'] %}
+                    {% set mult = res['MULTIMEDIAS'] %}
+                {% else %}
+                    {% set mult = res['MULTIMEDIAS']|first %}
+                {% endif %}
+                {% set {$imageUrl} = mult['MUL_URL_$lang'] %}
+            {% endif %}
+            ";
+        return $code;
     }
 
 }
