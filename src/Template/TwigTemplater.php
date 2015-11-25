@@ -1,6 +1,6 @@
 <?php
 
-namespace O2Web\TourismeQuebec\Template;
+namespace O2Web\TwigTemplate\Template;
 
 /**
  * Description of TwigTemplater

@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace O2Web\TourismeQuebec\Schema;
+namespace O2Web\TwigTemplate\Schema;
 
 /**
  * Description of Constants
