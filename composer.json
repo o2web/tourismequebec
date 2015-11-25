@@ -1,5 +1,5 @@
 {
-    "name": "o2web/tourismequebec",
+    "name": "o2web/twigtemplate",
     "description": "This library provides an easy way to manage several query, filters, aggregation and others in elastica structure",
     "keywords": ["o2web", "tourismequebec", "quebec", "tourisme"],
     "license": "MIT",
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "O2Web\\TourismeQuebec\\": "src/"
+            "O2Web\\TwigTemplate\\": "src/"
         }
     },
     "minimum-stability": "stable"
