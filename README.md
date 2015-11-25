@@ -1,2 +1,2 @@
-# tourismequebec
-Library used in TourismeQuebec project
+# Twig template
+Library used in Twigtemplate project
